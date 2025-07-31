@@ -3,13 +3,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import heroImg from "@/assets/img/hero.webp";
 import farm1Img from "@/assets/img/farm1.webp";
 import farm2Img from "@/assets/img/farm2.webp";
 import farm3Img from "@/assets/img/farm3.webp";
 import farm4Img from "@/assets/img/farm4.webp";
 import FarmImages from "@/components/widgets/FarmImages";
-import { BookOpen, Lightbulb, Settings, Users } from "lucide-react";
+import { BookOpen, Lightbulb, Settings, Users, CalendarDays, LeafyGreen, Apple } from "lucide-react";
 import {
   admissionCards,
   goalCards,
@@ -41,13 +40,7 @@ export default function Home() {
     <main className="flex-1">
       {/* Hero Section */}
       <section className="relative w-full h-[90vh] max-h-[1200px] flex items-center justify-center text-center text-white overflow-hidden">
-        <Image
-          src={heroImg.src}
-          alt="Lush green farm"
-          layout="fill"
-          objectFit="cover"
-          className="z-0 brightness-70"
-        />
+      <FarmImages />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,21 +66,21 @@ export default function Home() {
 
       {/* Company Description Section */}
       <section className="py-16 md:py-24 bg-background">
-        <div className="relative z-10 container mx-auto px-4 text-white">
-          <div className="flex flex-col-reverse md:flex-row gap-12 items-center">
+        <div className="container mx-auto px-4 text-black">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5 }}
-              className="flex-1 relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-lg"
+              className="flex-1 relative w-full h-[300px] md:h-[500px] -rotate-3 hover:rotate-0 transition-transform duration-300 ease-in-out"
             >
               <Image
-                src="https://images.unsplash.com/photo-1717572682950-7bf760980ce0?q=80&w=640&auto=format&fit=crop"
-                alt="Farm machinery"
+                src="https://images.unsplash.com/photo-1683543124257-1d214be3a366?q=80&w=640&auto=format&fit=crop"
+                alt="Maize"
                 layout="fill"
                 objectFit="cover"
-                className="z-0"
+                className="z-0 rounded-lg shadow-lg"
               />
             </motion.div>
             <motion.div
@@ -97,17 +90,36 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="flex-1"
             >
-              <h2 className="text-3xl md:text-4xl font-headline font-bold text-black">
-                The Prime Farmers Association
+              <p className="text-primary font-semibold mb-2">ABOUT</p>
+              <h2 className="text-3xl md:text-4xl font-headline font-bold">
+               The Prime Farmers Association
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                An important component of Agricultural and Rural Development in
+              An important component of Agricultural and Rural Development in
                 Ewu, Edo State, an informal educational process in strengthening
                 capacities, empowering rural people and promoting innovations
                 that will help them overcome occupational challenges, take
                 advantage of market opportunities to create wealth and improve
                 their livelihoods.
               </p>
+              <div className="flex items-center space-x-4 mt-6">
+                <div className="bg-primary text-white rounded-full p-4 flex items-center justify-center size-20 flex-shrink-0">
+                  <CalendarDays className="size-10" />
+                </div>
+                <div>
+                  <h3 className="text-4xl font-bold text-primary">5</h3>
+                  <p className="text-muted-foreground">YEARS OF EXPERIENCED</p>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-6 mt-8">
+                <div className="flex items-center space-x-3">
+                  <LeafyGreen className="size-6 text-primary" />
+                  <p className="text-muted-foreground font-semibold">Growing Maize</p>
+                </div>
+              </div>
+              <Button asChild size="lg" className="mt-8 bg-accent hover:bg-accent/90 text-accent-foreground">
+                <Link href="/about">Learn More</Link>
+              </Button>
             </motion.div>
           </div>
         </div>
@@ -173,9 +185,9 @@ export default function Home() {
           alt="Farmland background"
           layout="fill"
           objectFit="cover"
-          className="z-0 brightness-40"
+          className="z-0"
         />
-        <div className="absolute size-full inset-0 bg-gradient-to-b from-accent/40 to-black/80" />
+        <div className="absolute size-full inset-0 bg-gradient-to-b from-lime-900/90 to-black/80" />
         <div className="relative z-10 container mx-auto px-4 text-white">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-headline font-bold">
@@ -298,7 +310,7 @@ export default function Home() {
             </p>
           </div>
           <motion.div
-            className="max-w-6xl mx-auto space-y-8"
+            className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -308,10 +320,8 @@ export default function Home() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                style={{ backgroundImage: `url(${card.image.src})` }}
-                className="relative flex items-start space-x-6 p-6 rounded-lg border border-primary overflow-hidden"
+                className="flex items-start space-x-6 p-6 rounded-lg bg-accent/10 overflow-hidden"
               >
-                <div className="absolute w-full inset-0 z-0 bg-white/85 backrop-blur-xl" />
                 <div className="relative z-10 flex items-start space-x-6">
                   {card.icon}
                   <div>
@@ -465,22 +475,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Farm images */}
-      <FarmImages />
-
       {/* Call to Action Section */}
-      <section className="py-16 md:py-24 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
+      <section style={{background: `url(${farm1Img.src}) no-repeat fixed center / cover`}} className="relative py-16 md:py-24 text-white">
+      <div className="absolute h-full inset-0 bg-black/70 z-0" />
+        <div className="relative container mx-auto px-4 text-center z-1">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4 text-secondary-foreground">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold mb-4">
               Ready to Grow With Us?
             </h2>
-            <p className="text-lg text-secondary-foreground/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg opacity-80 mb-8 max-w-2xl mx-auto">
               Join a network of passionate farmers, gain access to valuable
               resources, and make a real impact on our community's future.
             </p>

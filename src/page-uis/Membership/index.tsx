@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import farm3 from "@/assets/img/farm3.webp";
+import hero from "@/assets/img/hero.webp";
+import FarmImages from "@/components/widgets/FarmImages";
 
 export default function Membership() {
   const containerVariants = {
@@ -49,16 +51,43 @@ export default function Membership() {
 
   return (
     <main className="">
+      <section className="relative h-[50vh] flex items-center justify-center">
+        <FarmImages
+        />
+        <div className="absolute inset-0 bg-black/60 -z-10" />
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-5xl md:text-6xl font-bold text-white text-center"
+        >
+          Membership
+        </motion.h1>
+      </section>
       <div className="container mx-auto text-center mb-4 px-4 py-16">
-        <h1 className="text-4xl md:text-5xl">Join Our Community</h1>
-        <div className="flex flex-col md:flex-row gap-8 mt-8">
+        <div className="flex items-center flex-col-reverse md:flex-row gap-8 mt-8">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="flex-1 mt-4 text-xl text-muted-foreground mx-auto text-left"
+            className="flex-1 h-full"
           >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=640&auto=format&fit=crop"
+              alt=""
+              className="size-full object-cover rounded-xl shadow-xl"
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="flex-1 mt-4 text-lg text-muted-foreground mx-auto text-left"
+          >
+        <h1 className="text-3xl text-black font-semibold mb-3">Join Our Community</h1>
             <p>
               Become a part of Prime Farmers Association and help us shape the
               future of agriculture. Choose the membership that's right for you.
@@ -71,20 +100,6 @@ export default function Membership() {
               for significant contributions to agriculture and rural
               development.
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="flex-1 h-full"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1630068846062-3ffe78aa5049?q=80&w=640&auto=format&fit=crop"
-              alt="Farmer with Phone"
-              className="size-full object-cover rounded-xl shadow-xl"
-            />
           </motion.div>
         </div>
       </div>

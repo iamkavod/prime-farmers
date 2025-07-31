@@ -124,9 +124,11 @@ export default function Contact() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.5 }}
-        className="mt-12 mb-24"
+        style={{background: `url(${farm3Img.src}) no-repeat fixed center / cover`}}
+        className="relative pt-12 pb-24"
       >
-        <Card className="container mx-auto border rounded-2xl p-6">
+      <div className="absolute h-full inset-0 bg-accent/50 z-0" />
+        <Card className="relative z-1 container mx-auto border rounded-2xl p-6">
           <CardHeader className="text-center">
             <CardTitle className="font-headline text-4xl">
               Get In Touch
@@ -224,7 +226,7 @@ export default function Contact() {
         </Card>
       </motion.div>
 
-      <section className="bg-secondary px-4 py-12">
+      <section className="bg-background px-4 py-12">
         <div className="container mx-auto">
           <h2 className="text-3xl font-headline font-bold text-center mb-2">
             Yearly Target
@@ -245,7 +247,7 @@ export default function Contact() {
               production, the Prime Farmers' Association in Ewu, Edo State, has
               set ambitious targets to produce:
             </p>
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <div className="text-xl grid md:grid-cols-2 gap-6 mb-24">
               <motion.div variants={itemVariants}>
                 <div className="flex items-start space-x-3">
                   <ClipboardList className="size-6 text-primary flex-shrink-0 mt-1" />
@@ -273,10 +275,10 @@ export default function Contact() {
               </motion.div>
             </div>
 
-            <h3 className="text-2xl font-headline mb-4 text-center">
-              Objectives:
+            <h3 className="text-3xl font-headline mb-8 text-center">
+              Objectives
             </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
               {objectives.map((objective, index) => (
                 <motion.div
                   key={index}
@@ -301,10 +303,10 @@ export default function Contact() {
               ))}
             </div>
 
-            <h3 className="text-2xl font-headline mb-4 text-center">
-              Benefits:
+            <h3 className="text-3xl font-headline mb-8 text-center">
+              Benefits
             </h3>
-            <ul className="list-none space-y-2 text-muted-foreground mb-8">
+            <ul className="list-none space-y-2 text-xl text-muted-foreground mb-8">
               <motion.li variants={itemVariants} className="flex items-start">
                 <TrendingUp className="h-5 w-5 text-primary flex-shrink-0 mr-2 mt-1" />
                 <span>

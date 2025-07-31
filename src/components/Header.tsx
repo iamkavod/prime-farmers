@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { BookImage, Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -17,7 +17,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/membership", label: "Membership" },
   { href: "/about", label: "About Us" },
-  { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -47,9 +46,11 @@ export function Header() {
       href={href}
       onClick={() => isMobile && setMobileMenuOpen(false)}
       className={cn(
-        "transition-colors hover:text-primary text-lg",
-        pathname === href ? "text-primary font-semibold" : "text-foreground/80",
-        isMobile ? "block py-2" : "font-medium",
+        "transition-colors text-lg",
+        pathname === href
+          ? "bg-primary text-white py-1 px-4 rounded"
+          : "text-foreground hover:text-primary",
+        isMobile ? "block py-2" : "font-medium"
       )}
     >
       {label}
@@ -62,17 +63,43 @@ export function Header() {
         "sticky top-0 z-50 w-full transition-all duration-300",
         isScrolled
           ? "bg-background/80 backdrop-blur-xl shadow-md"
-          : "bg-transparent",
+          : "bg-transparent"
       )}
     >
+      {/* Top Bar */}
+      <div className="bg-secondary text-secondary-foreground py-2 text-sm hidden md:block">
+        <div className="container mx-auto px-4 flex justify-between items-center">
+            <span className="flex items-center gap-2">
+              <Phone className="size-4 text-primary" />
+              Free Call +2347081087547, +23470710PRIME
+            </span>
+          <div className="flex items-center space-x-6">
+            <span className="flex items-center gap-2">
+              <MapPin className="size-4 text-primary" />
+              Our Location
+            </span>
+            <span>KM 90 Benin Auchi road Eko Ewu Edo State</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Header */}
       <div className="container mx-auto px-4">
         <div className="flex h-16 lg:h-22 items-center justify-between">
           <Logo />
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8 py-3 px-6 rounded">
             {navLinks.map((link) => (
               <NavLink key={link.href} {...link} />
             ))}
           </nav>
+          <Link
+            className="hidden md:flex gap-1 items-center px-12 py-3 border border-primary bg-transparent hover:bg-primary/8 text-primary rounded-full"
+            href="/gallery"
+          >
+            <BookImage className="-rotate-[10deg]"/>
+            Gallery
+          </Link>
+
           <div className="md:hidden">
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -97,6 +124,12 @@ export function Header() {
                       <NavLink key={link.href} {...link} isMobile />
                     ))}
                   </nav>
+                  <Button
+                    asChild
+                    className="mt-8 w-full border border-primary rounded-full bg-transparent hover:bg-primary/90 text-primary"
+                  >
+                    <Link href="/gallery">Gallery</Link>
+                  </Button>
                 </div>
               </SheetContent>
             </Sheet>
