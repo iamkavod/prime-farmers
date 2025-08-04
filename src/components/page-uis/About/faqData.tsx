@@ -1,4 +1,4 @@
-const faqItems = [
+const faqData = [
   {
     question: "How do I become a member of Prime Farmers Association?",
     answer:
@@ -31,4 +31,4 @@ const faqItems = [
   },
 ];
 
-export default faqItems;
+export default faqData;

@@ -6,7 +6,7 @@ interface FullScreenImageProps {
   src: string;
   onClose: () => void;
   isVideo: boolean;
-  mimeType?: string; // Added mimeType prop
+  mimeType?: string;
 }
 
 export default function FullScreenImage({
