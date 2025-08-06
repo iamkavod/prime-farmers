@@ -1,23 +1,22 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import {
-  ChevronRight,
   CalendarDays,
   Leaf,
-  Sprout,
-  Milk,
-  Award,
-  CircleCheckBig,
   Play,
   BookOpen,
   Users,
   Lightbulb,
   Settings,
+  Weight,
+  LandPlot,
+  CalendarRange,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FAQItem from "@/components/widgets/FaqItem";
 import faqData from "./faqData";
 import Link from "next/link";
+import BgCarousel from "@/components/widgets/BgCarousel";
 
 const missionCards = [
   {
@@ -54,12 +53,14 @@ interface CounterBlockProps {
   icon: React.ElementType;
   endValue: number;
   label: string;
+  includePlus?: boolean;
 }
 
 const CounterBlock: React.FC<CounterBlockProps> = ({
   icon: Icon,
   endValue,
   label,
+  includePlus = false,
 }) => {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -104,7 +105,10 @@ const CounterBlock: React.FC<CounterBlockProps> = ({
         <Icon className="h-8 w-8" />
       </div>
       <div className="flex-grow text-white">
-        <div className="text-4xl font-bold">{count.toLocaleString()}</div>
+        <div className="text-4xl font-bold">
+          {count.toLocaleString()}
+          {includePlus && "+"}
+        </div>
         <div className="text-lg font-medium opacity-80">{label}</div>
       </div>
     </div>
@@ -112,21 +116,26 @@ const CounterBlock: React.FC<CounterBlockProps> = ({
 };
 
 const counterData = [
-  { icon: Leaf, endValue: 4800, label: "Project Completed" },
-  { icon: Sprout, endValue: 14000, label: "Total Products" },
-  { icon: Award, endValue: 200, label: "Services Provide" },
-  { icon: CircleCheckBig, endValue: 71650, label: "Satisfied Customers" },
+  {
+    icon: LandPlot,
+    endValue: 300,
+    label: "Hectares Cultivated",
+    includePlus: true,
+  },
+  {
+    icon: Weight,
+    endValue: 15000,
+    label: "Tons of Maize Annually",
+    includePlus: true,
+  },
+  { icon: CalendarRange, endValue: 2, label: "Planting Cycle" },
 ];
 
 export default function Home() {
   return (
     <div className="font-sans">
-      <section
-        className="relative h-screen flex items-center justify-center text-center bg-cover bg-center"
-        style={{
-          backgroundImage: "url(images/hero.webp)",
-        }}
-      >
+      <section className="relative h-screen flex items-center justify-center text-center bg-cover bg-center">
+        <BgCarousel />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white opacity-50 z-10"></div>
         <div className="relative z-20 container mx-auto px-4 text-white">
           <div className="max-w-3xl mx-auto">
@@ -143,16 +152,18 @@ export default function Home() {
               </p>
               <div className="flex justify-center space-x-4">
                 <Button
+                  asChild
                   variant="default"
                   className="bg-green-600 hover:bg-green-700 text-white rounded-full px-6 py-3"
                 >
-                  Join our Mission
+                  <Link href="/membership">Become a member</Link>
                 </Button>
                 <Button
+                  asChild
                   variant="secondary"
                   className="bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-full px-6 py-3"
                 >
-                  Contact us
+                  <Link href="/contact">Contact us</Link>
                 </Button>
               </div>
             </div>
@@ -165,9 +176,9 @@ export default function Home() {
           <div className="flex flex-col lg:flex-row gap-8">
             <div className="hidden lg:block w-full lg:w-1/2 relative h-[500px]">
               <div
-                className="absolute inset-0 w-[85%] rounded-lg bg-cover bg-center"
+                className="absolute inset-0 w-[85%] rounded-lg"
                 style={{
-                  backgroundImage: "url(images/farm1.webp)",
+                  backgroundImage: "url(images/hero.webp)",
                 }}
               >
                 <div className="absolute top-1/2 left-[90%] bg-white/70 backdrop-blur-sm rounded-lg p-6 text-center text-gray-800 shadow-lg min-w-[200px]">
@@ -175,7 +186,7 @@ export default function Home() {
                     <CalendarDays className="h-10 w-10 mx-auto" />
                   </div>
                   <strong className="text-6xl font-extrabold text-green-600">
-                    5
+                    {new Date().getFullYear() - 2020}
                   </strong>
                   <span className="block text-sm leading-tight mt-1">
                     Years Of
@@ -233,12 +244,12 @@ export default function Home() {
       <section
         className="relative py-24 bg-cover bg-center"
         style={{
-          backgroundImage: "url(images/about.webp)",
+          background: "url(images/about.webp) no-repeat fixed center / cover",
         }}
       >
         <div className="absolute inset-0 bg-green-800 opacity-70 z-10"></div>
         <div className="relative z-20 container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {counterData.map((item, index) => (
               <CounterBlock key={index} {...item} />
             ))}
@@ -256,32 +267,26 @@ export default function Home() {
         <div className="relative z-20 container mx-auto px-4 text-white text-center">
           <a
             href="https://vimeo.com/45830194"
+            target="_blank"
             className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-green-600/80 hover:bg-green-600 transition-colors duration-300 mb-4"
           >
             <Play className="w-12 h-12" />
           </a>
-          <h3 className="text-3xl font-bold">
-            Watch Modern Agricultural Farming
-          </h3>
+          <h3 className="text-3xl font-bold">See our Farm</h3>
         </div>
       </section>
 
       {/* Our Mission Section */}
-      <section id="mission" className="relative py-16 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="images/farm3.webp"
-            alt="Agricultural landscape"
-            className="w-full h-full object-cover opacity-60"
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        <div className="relative z-10 container mx-auto px-4 text-white text-center">
+      <section
+        id="mission"
+        className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
+      >
+        <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="mb-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-2 drop-shadow-xl">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Our Mission
             </h2>
-            <p className="text-white/80 mt-4 text-lg">
+            <p className="text-gray-600 mt-4 text-lg">
               To empower agricultural value chain actors in Ewu, Edo State, by
               fostering collaboration, innovation, and capacity building among
               extension service providers, research institutions, and
@@ -292,16 +297,21 @@ export default function Home() {
             {missionCards.map((card, index) => (
               <div
                 key={index}
-                className="relative flex flex-col items-center text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl shadow-lg border border-white/20 transition-all duration-300 hover:scale-105"
+                className="relative flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg transition-all duration-300 hover:scale-105"
               >
-                <div className="relative z-10 text-white">
+                <div className="relative z-10">
                   {card.icon}
                   <h3 className="text-xl font-bold mt-4 mb-2">{card.title}</h3>
-                  <p className="text-white/80 text-sm">{card.description}</p>
+                  <p className="text-gray-600 text-sm">{card.description}</p>
                 </div>
               </div>
             ))}
           </div>
+          <p className="text-center text-gray-600 mt-12 italic mx-auto max-w-2xl">
+            These mission statements serve as a foundation for PFA's strategic
+            direction and guide its efforts to support agricultural development
+            in Ewu, Edo State, Nigeria.
+          </p>
         </div>
       </section>
 
@@ -390,11 +400,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <p className="text-center mt-12 text-white/80 italic mx-auto max-w-2xl">
-            These mission statements serve as a foundation for PFA's strategic
-            direction and guide its efforts to support agricultural development
-            in Ewu, Edo State, Nigeria.
-          </p>
         </div>
       </section>
 

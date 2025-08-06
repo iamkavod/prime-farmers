@@ -54,7 +54,7 @@ export default function Contact() {
       {/* Hero Section */}
       <section
         className="relative h-96 flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url(images/hero.webp)" }}
+        style={{ backgroundImage: "url(images/hero0.webp)" }}
       >
         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
         <div className="relative z-20 text-center text-white p-4">
@@ -197,7 +197,7 @@ export default function Contact() {
             <div className="lg:col-span-3 flex items-stretch">
               <div
                 className="w-full rounded-2xl bg-cover bg-center"
-                style={{ backgroundImage: "url('images/farm1.webp')" }}
+                style={{ backgroundImage: "url('images/hero1.webp')" }}
               ></div>
             </div>
           </div>

@@ -1,15 +1,6 @@
 "use client";
 import { useState } from "react";
-import {
-  Mail,
-  Facebook,
-  Twitter,
-  Instagram,
-  Dribbble,
-  Map,
-  Phone,
-  Menu,
-} from "lucide-react";
+import { Mail, Map, Phone, Menu } from "lucide-react";
 import { Logo } from "./Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,14 +8,6 @@ import { usePathname } from "next/navigation";
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  // Data for the social media links in the top bar
-  const socialLinks = [
-    { icon: Facebook, url: "#" },
-    { icon: Twitter, url: "#" },
-    { icon: Instagram, url: "#" },
-    { icon: Dribbble, url: "#" },
-  ];
 
   // Data for the main navigation links
   const navLinks = [
@@ -36,30 +19,6 @@ export default function Header() {
 
   return (
     <header className="font-sans antialiased text-gray-900">
-      {/* Top Bar */}
-      <div className="hidden md:block bg-green-600 text-white text-sm py-2">
-        <div className="container mx-auto px-4 flex justify-between items-center flex-wrap">
-          <a
-            href="mailto:info@prime-farmers.com"
-            className="flex items-center space-x-2 my-1"
-          >
-            <Mail className="w-4 h-4" />
-            <span>info@prime-farmers.com</span>
-          </a>
-          <div className="flex items-center space-x-2 my-1">
-            {socialLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.url}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-green-700 hover:bg-green-800 transition-colors"
-              >
-                <link.icon className="w-4 h-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Main Header Content */}
       <div className="bg-white shadow-sm">
         <div className="container mx-auto px-4">
@@ -74,7 +33,7 @@ export default function Header() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div className="ml-3">
-                  <p className="font-bold">Free Call</p>
+                  <p className="font-bold">Call</p>
                   <a
                     href="tel:+2347081087547"
                     className="text-gray-600 hover:text-green-600 transition-colors"
@@ -100,7 +59,7 @@ export default function Header() {
       </div>
 
       {/* Navigation Bar */}
-      <nav className="bg-gray-800 text-white py-4 shadow-lg">
+      <nav className="bg-green-900 text-white py-4 shadow-lg">
         <div className="container mx-auto px-4 flex justify-between items-center">
           {/* Mobile menu toggle button */}
           <button

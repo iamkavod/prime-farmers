@@ -101,7 +101,7 @@ export default function Gallery() {
       {/* Hero Section */}
       <section
         className="relative h-96 flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url('images/hero.webp')" }}
+        style={{ backgroundImage: "url('images/hero1.webp')" }}
       >
         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
         <div className="relative z-20 text-center text-white p-4">
@@ -118,17 +118,17 @@ export default function Gallery() {
 
       {/* Gallery Grid Section */}
       {loading ? (
-        <div className="container mx-auto px-4 py-12 text-center">
+        <div className="container mx-auto px-4 py-12 italic text-lg text-center">
           <p>Loading gallery...</p>
         </div>
       ) : error ? (
-        <div className="container mx-auto px-4 py-12 text-center">
+        <div className="container mx-auto px-4 py-12 italic text-lg text-red-500 text-center">
           <p className="text-red-500">{error}</p>
         </div>
       ) : galleryItems.length === 0 ? (
-        <main className="container mx-auto px-4 py-12 text-center">
+        <div className="container mx-auto px-4 py-12 italic text-lg text-center">
           <p>No images or videos found in the gallery.</p>
-        </main>
+        </div>
       ) : (
         <section id="media" className="container mx-auto py-16 px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

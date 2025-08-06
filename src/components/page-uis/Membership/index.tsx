@@ -2,9 +2,11 @@
 import {
   Award,
   BadgeCheck,
-  ChevronDown,
+  Briefcase,
   ChevronRight,
+  Crown,
   FileText,
+  User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FAQItem from "@/components/widgets/FaqItem";
@@ -17,7 +19,7 @@ export default function Membership() {
       {/* Hero Section */}
       <section
         className="relative h-96 flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url('images/hero.webp')" }}
+        style={{ backgroundImage: "url('images/hero0.webp')" }}
       >
         <div className="absolute inset-0 bg-black opacity-50 z-10"></div>
         <div className="relative z-20 text-center text-white p-4">
@@ -26,33 +28,111 @@ export default function Membership() {
               Home
             </Link>
             <ChevronRight className="w-4 h-4 mx-2" />
-            <span>Memberships</span>
+            <span>Membership</span>
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold mt-4">Memberships</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold mt-4">Membership</h1>
         </div>
       </section>
 
-      <section
-        style={{
-          background: `url(images/farm1.webp) no-repeat fixed center / cover`,
-        }}
-        className="relative py-16 md:py-24 text-white"
-      >
-        <div className="absolute h-full inset-0 bg-black/70 z-0" />
-        <div className="relative container mx-auto px-4 text-center z-1">
-          <div>
-            <p className="md:text-2xl mb-8 container mx-auto">
-              Become a part of Prime Farmers Association and help us shape the
-              future of agriculture. Choose the membership that's right for you.
-              Membership types include: Ordinary, for practicing farmers and
-              related professionals (ordinary membership fee is ₦50,000, Uniform
-              is ₦20,000 - Polo or Shirt and Cap); Life, a one-time payment
-              option with enhanced benefits; Corporate, for organizations
-              aligned with agricultural extension and advisory services in Ewu,
-              Nigeria; and Honorary, conferred upon distinguished individuals
-              for significant contributions to agriculture and rural
-              development.
+      {/* Membership Types Section */}
+      <section className="py-16 md:py-24 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-gray-900">
+              Membership Types
+            </h2>
+            <p className="text-gray-600 mt-4 text-lg max-w-3xl mx-auto">
+              The association offers different membership types to accommodate a
+              wide range of professionals and organizations committed to
+              agricultural and rural development.
             </p>
+          </div>
+          <div className="max-w-6xl mx-auto space-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-xl text-center text-gray-900">
+                <User className="h-12 w-12 text-green-600 mb-4" />
+                <h4 className="text-xl font-bold mb-2">Ordinary</h4>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-xl text-center text-gray-900">
+                <Award className="h-12 w-12 text-green-600 mb-4" />
+                <h4 className="text-xl font-bold mb-2">Life</h4>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-xl text-center text-gray-900">
+                <Briefcase className="h-12 w-12 text-green-600 mb-4" />
+                <h4 className="text-xl font-bold mb-2">Corporate</h4>
+              </div>
+              <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-xl text-center text-gray-900">
+                <Crown className="h-12 w-12 text-green-600 mb-4" />
+                <h4 className="text-xl font-bold mb-2">Honorary</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Eligibility Section */}
+      <section
+        className="py-16 md:py-24 bg-cover bg-center relative"
+        style={{
+          background: "url('images/hero.webp') no-repeat fixed center / cover",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/70 z-0"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-white">
+              Eligibility
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-white">
+            <div className="p-6 bg-white/10 backdrop-blur-md rounded-lg shadow-xl space-y-4">
+              <div className="flex items-center space-x-4">
+                <User className="h-12 w-12 text-white flex-shrink-0" />
+                <h4 className="text-xl font-bold">Ordinary Membership</h4>
+              </div>
+              <p className="text-gray-200">
+                Any Professional in Agriculture, practicing farmer, or Rural
+                Development, or related disciplines, is eligible for ordinary
+                membership, subject to the payment of prescribed fees and dues.
+              </p>
+            </div>
+            <div className="p-6 bg-white/10 backdrop-blur-md rounded-lg shadow-xl space-y-4">
+              <div className="flex items-center space-x-4">
+                <Award className="h-12 w-12 text-white flex-shrink-0" />
+                <h4 className="text-xl font-bold">Life Membership</h4>
+              </div>
+              <p className="text-gray-200">
+                Any person eligible for ordinary membership who pays the
+                prescribed fees is eligible for life membership.
+              </p>
+            </div>
+            <div className="p-6 bg-white/10 backdrop-blur-md rounded-lg shadow-xl space-y-4">
+              <div className="flex items-center space-x-4">
+                <Briefcase className="h-12 w-12 text-white flex-shrink-0" />
+                <h4 className="text-xl font-bold">Corporate Membership</h4>
+              </div>
+              <p className="text-gray-200">
+                Any organization, public or private, whose mandate and
+                activities are in the areas of, or related to agricultural
+                extension and advisory services provision in Ewu, Nigeria, is
+                eligible for corporate membership, subject to the payment of
+                prescribed fees as per the rules and bye-laws of the
+                Association.
+              </p>
+            </div>
+            <div className="p-6 bg-white/10 backdrop-blur-md rounded-lg shadow-xl space-y-4">
+              <div className="flex items-center space-x-4">
+                <Crown className="h-12 w-12 text-white flex-shrink-0" />
+                <h4 className="text-xl font-bold">Honorary Membership</h4>
+              </div>
+              <p className="text-gray-200">
+                Any person who has achieved National or International
+                recognition for their significant contributions in the field of
+                Agriculture and Rural Development may be conferred with honorary
+                membership of the PFA as a mark of respect, recognition, and
+                honor.
+              </p>
+            </div>
           </div>
         </div>
       </section>
