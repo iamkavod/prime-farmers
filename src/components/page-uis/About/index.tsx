@@ -95,7 +95,7 @@ export default function About() {
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-8 items-center">
-            <div className="w-full lg:w-1/2 relative min-h-[400px] lg:h-[500px]">
+            <div className="hidden lg:block w-full lg:w-1/2 relative min-h-[400px] lg:h-[500px]">
               <div
                 className="absolute inset-0 w-[85%] rounded-3xl bg-cover bg-center shadow-xl"
                 style={{

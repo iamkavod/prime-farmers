@@ -99,7 +99,7 @@ export default function Header() {
 
         {/* Mobile menu */}
         <div
-          className={`${isMobileMenuOpen ? "block" : "hidden"} md:hidden bg-gray-800 mt-4`}
+          className={`${isMobileMenuOpen ? "block" : "hidden"} md:hidden bg-green-800 mt-4`}
         >
           <ul className="flex flex-col space-y-2 p-4">
             {navLinks.map((link, index) => {
@@ -108,7 +108,7 @@ export default function Header() {
                 <li key={index}>
                   <Link
                     href={link.url}
-                    className={`block px-4 py-2 rounded-lg ${isActive ? "bg-gray-700 text-green-500" : "text-gray-300"} hover:bg-gray-700 hover:text-green-500 transition-colors`}
+                    className={`block px-4 py-2 rounded-lg ${isActive ? "bg-black/20 text-green-500" : "text-gray-300"} hover:bg-gray-700 hover:text-green-500 transition-colors`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
@@ -119,7 +119,8 @@ export default function Header() {
             <li>
               <Link
                 href="/membership"
-                className="my-4 bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-green-700 transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block w-fit my-4 bg-green-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-green-700 transition-colors"
               >
                 Membership
               </Link>

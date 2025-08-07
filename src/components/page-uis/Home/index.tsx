@@ -11,6 +11,7 @@ import {
   Weight,
   LandPlot,
   CalendarRange,
+  BriefcaseBusiness,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FAQItem from "@/components/widgets/FaqItem";
@@ -115,7 +116,7 @@ const CounterBlock: React.FC<CounterBlockProps> = ({
   );
 };
 
-const counterData = [
+const metrics = [
   {
     icon: LandPlot,
     endValue: 300,
@@ -129,6 +130,19 @@ const counterData = [
     includePlus: true,
   },
   { icon: CalendarRange, endValue: 2, label: "Planting Cycle" },
+  {
+    icon: BriefcaseBusiness,
+    endValue: 240,
+    label: "Jobs Created",
+    includePlus: true,
+  },
+  { icon: Users, endValue: 2, label: "Communities Empowered" },
+  {
+    icon: BookOpen,
+    endValue: 100,
+    label: "Small Holder Farmers Onboarded",
+    includePlus: true,
+  },
 ];
 
 export default function Home() {
@@ -136,7 +150,7 @@ export default function Home() {
     <div className="font-sans">
       <section className="relative h-screen flex items-center justify-center text-center bg-cover bg-center">
         <BgCarousel />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white opacity-50 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white opacity-50 z-10" />
         <div className="relative z-20 container mx-auto px-4 text-white">
           <div className="max-w-3xl mx-auto">
             <div className="mb-8">
@@ -150,7 +164,7 @@ export default function Home() {
                 We are is dedicated to empowering farmers through innovation,
                 education, and community.
               </p>
-              <div className="flex justify-center space-x-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <Button
                   asChild
                   variant="default"
@@ -247,32 +261,21 @@ export default function Home() {
           background: "url(images/about.webp) no-repeat fixed center / cover",
         }}
       >
-        <div className="absolute inset-0 bg-green-800 opacity-70 z-10"></div>
+        <div className="absolute inset-0 bg-green-800 opacity-70 z-10" />
         <div className="relative z-20 container mx-auto px-4">
+          <div className="text-white text-center mb-12 max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+              Our Impact in Numbers
+            </h2>
+            <p className="opacity-90 mt-4 text-lg">
+              We are empowering the agricultural value chain in Edo State
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {counterData.map((item, index) => (
+            {metrics.map((item, index) => (
               <CounterBlock key={index} {...item} />
             ))}
           </div>
-        </div>
-      </section>
-
-      <section
-        className="relative py-32 bg-cover bg-center"
-        style={{
-          backgroundImage: "url(images/farm2.webp)",
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
-        <div className="relative z-20 container mx-auto px-4 text-white text-center">
-          <a
-            href="https://vimeo.com/45830194"
-            target="_blank"
-            className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-green-600/80 hover:bg-green-600 transition-colors duration-300 mb-4"
-          >
-            <Play className="w-12 h-12" />
-          </a>
-          <h3 className="text-3xl font-bold">See our Farm</h3>
         </div>
       </section>
 
@@ -282,7 +285,7 @@ export default function Home() {
         className="relative bg-gray-50 py-16 md:py-24 overflow-hidden"
       >
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="mb-12 max-w-4xl mx-auto">
+          <div className="mb-12 text-center max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
               Our Mission
             </h2>
