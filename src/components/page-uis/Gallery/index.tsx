@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import FullScreenImage from "@/components/widgets/FullScreenImage";
 import { fetchGoogleDriveFiles } from "@/lib/googleDrive";
-import { ChevronRight, PlayCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -15,6 +15,7 @@ interface MediaFile {
   mimeType: string;
   thumbnailLink?: string;
   src?: string;
+  size?: string;
 }
 
 interface GalleryItem {
@@ -22,6 +23,7 @@ interface GalleryItem {
   isVideo: boolean;
   mimeType: string;
   thumbnailSrc?: string;
+  size?: string;
 }
 
 export default function Gallery() {
@@ -54,6 +56,7 @@ export default function Gallery() {
       isVideo: file.mimeType.startsWith("video/"),
       mimeType: file.mimeType,
       thumbnailSrc: file.thumbnailLink,
+      size: file.size,
     }));
   }, [mediaFiles]);
 
@@ -93,7 +96,7 @@ export default function Gallery() {
     return columns;
   };
 
-  // Use 4 columns for masonry based on the example's md:grid-cols-4 structure
+  // Use 4 columns for masonry based on the example\'s md:grid-cols-4 structure
   const masonryColumns = getMasonryColumns(currentItems, 4);
 
   return (
@@ -131,9 +134,9 @@ export default function Gallery() {
         </div>
       ) : (
         <section id="media" className="container mx-auto py-16 px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {masonryColumns.map((column, colIndex) => (
-              <div key={colIndex} className="grid gap-4">
+              <div key={colIndex} className="flex flex-col gap-4">
                 {column.map((item, itemIndex) => (
                   <div
                     key={item.src + "-" + itemIndex}
@@ -179,10 +182,12 @@ export default function Gallery() {
               variant="outline"
               className="bg-green-500 hover:bg-green-500/20 text-white"
             >
-              <a href="#media">Previous</a>
+              <a href="#media" title="Previous">
+                <ChevronLeft />
+              </a>
             </Button>
             <span className="mx-4 text-muted-foreground">
-              Page {currentPage} of {totalPages}
+              Page {currentPage} / {totalPages}
             </span>
             <Button
               asChild
@@ -191,19 +196,16 @@ export default function Gallery() {
               variant="outline"
               className="bg-green-500 hover:bg-green-500/20 text-white"
             >
-              <a href="#media">Next</a>
+              <a href="#media" title="Next">
+                <ChevronRight />
+              </a>
             </Button>
           </div>
         </section>
       )}
 
       {fullScreenMedia && (
-        <FullScreenImage
-          src={fullScreenMedia.src}
-          isVideo={fullScreenMedia.isVideo}
-          mimeType={fullScreenMedia.mimeType}
-          onClose={closeFullScreen}
-        />
+        <FullScreenImage {...fullScreenMedia} onClose={closeFullScreen} />
       )}
     </main>
   );

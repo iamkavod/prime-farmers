@@ -11,6 +11,7 @@ interface GoogleDriveFile {
   mimeType: string;
   thumbnailLink?: string;
   src?: string;
+  size?: string;
 }
 
 export async function fetchGoogleDriveFiles(): Promise<GoogleDriveFile[]> {
@@ -23,7 +24,7 @@ export async function fetchGoogleDriveFiles(): Promise<GoogleDriveFile[]> {
     const response = await axios.get(GOOGLE_DRIVE_API_URL, {
       params: {
         q: `'${FOLDER_ID}' in parents and (mimeType contains 'image/' or mimeType contains 'video/')`,
-        fields: "files(id, name, mimeType, thumbnailLink)",
+        fields: "files(id, name, mimeType, thumbnailLink, size)",
         key: API_KEY,
       },
     });
