@@ -1,4 +1,4 @@
-const CACHE_NAME = 'prime-farmers-v1';
+const CACHE_NAME = 'prime-farmers-v2';
 const urlsToCache = [
   '/',
   '/about',
