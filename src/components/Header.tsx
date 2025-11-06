@@ -35,7 +35,7 @@ export default function Header() {
                 <div className="ml-3">
                   <p className="font-bold">Call</p>
                   <a
-                    href="tel:+2347081087547"
+                    href="tel:+2349136590235"
                     className="text-gray-600 hover:text-green-600 transition-colors"
                   >
                     +234 708 108 7547

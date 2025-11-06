@@ -161,7 +161,7 @@ export default function Home() {
                 Cultivating a Sustainable Future for Ewu, Edo State
               </h1>
               <p className="text-base md:text-lg mb-6 opacity-90">
-                We are is dedicated to empowering farmers through innovation,
+                We are dedicated to empowering farmers through innovation,
                 education, and community.
               </p>
               <div className="flex flex-wrap justify-center gap-4">

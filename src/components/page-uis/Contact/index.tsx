@@ -81,7 +81,7 @@ export default function Contact() {
             icon={Phone}
             title="Phone:"
             content={
-              <a href="tel:+2347081087547" className="hover:underline">
+              <a href="tel:+2349136590235" className="hover:underline">
                 +234 708 108 7547
               </a>
             }
